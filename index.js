@@ -1,46 +1,130 @@
 const express = require('express')
-//express 모듈을 가져온다.
+// package.json에 설치한 express 모듈을 js로 불러들임 
 const app = express()
-// 이것의 함수를 이용하여 새로운 앱을 만든다.
-const port = 5000
-// 5000번을 포트로 둔다
+// 새로운 express() app 을 만듬
+
 const bodyParser = require('body-parser');
+// package.json에 설치한 body-parser 모듈을 js로 불러들임
+const cookieParser = require('cookie-parser');
+// package.json에 설치한 cookie-parser 모듈을 js로 불러들임 
+
+const { auth } = require("./middleware/auth");
+const { User } = require("./models/User");
+// models/User.js를 불러옴
 const config = require('./config/key');
 
-const { User } = require("./models/User"); // 모델 가져오기
+
+
+// 데이터를 분석하여가져올수있게 bodyParser설정을해줌
+//application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+//application/json
+app.use(bodyParser.json());
+app.use(cookieParser());
 
 const mongoose = require('mongoose')
-mongoose.connect(config.mongoURI, {
-}).then(() => console.log('MongoDB Connect...')).catch(err => console.log(err))
+mongoose 
+    .connect(config.mongoURI)
+    .then(() => console.log("DB Connection Successfull!"))
+    .catch((err) => {
+        console.log(err);
+    });
 
 
-//appliaction/x-www-form-urlencoded
-//bodyparser가 클라이언트에서 가져오는 걸 분석해서
-app.use(bodyParser.urlencoded({extended: true}));
+app.get('/', (req, res) => res.send('Hello World!~~'))
+// 루트 디렉토리에 들어올경우 res.send로 HelloWorld! 를 출력하도록함
 
-//aplication/json 제이슨타입으로 분석해서 가져올 수 있게.
-app.use(bodyParser.json());
+//유저정보를 저장하는 코드(회원가입)
+app.post('/api/users/register', (req, res) => {
 
-
-app.get('/', (req, res) => res.send('Hello World! 안녕하세요ㅋㅋ'))
-// 루트 디렉토리에 헬로월드 출력!
-
-// 회원가입을 위한 라우트
-app.post('/register', (req, res) => {
-    //회원 가입 할 때 필요한 정보들을 client에서 가져오면
+    //회원가입 할때 필요한 정보들을 클라이언트 에서 가져오면
     // 그것들을 데이터베이스에 넣어준다.
-
-    //Line 9 가져온 모델로 인스턴스 생성 제이슨형식으로가져와짐
     const user = new User(req.body)
+    // req.body 안에는 json 형식으로 {id:"hello", password:"123"} = body-parser가 해당기능을 담당한다
+
+
+
+    // 몽고DB에서 오는 메서드
     user.save((err, userInfo) => {
-        if(err) return res.json({ success: false, err})
+        if (err) return res.json({ success: false, err }) //만약 err가 있으면 json형식으로 성공하지 못했다는 이력과 err메시지를 같이 전송함
         return res.status(200).json({
             success: true
-        })
-    }) // 
+        })//return end
+    }) //user.save end
+})// app.post end
 
+// 유저정보를 저장하는 코드 종료
+
+//유저 로그인 코드(로그인)
+app.post('/api/users/login', (req, res) => {
+
+    //요청된 이메일을 데이터베이스에서 검색
+    User.findOne({ email: req.body.email }, (err, user) => { // User플렉션 안에 요청된이메일값이 
+
+        if (!user) {  //한명도 없을경우
+            return res.json({
+                loginSuccess: false,
+                message: "제공된 이메일에 해당하는 유저가 없습니다."
+            }) //해당데이터를 리턴
+
+        }
+
+        //요청된 이메일이 데이터베이스에 있으면 비밀번호가 일치하는지 검사
+        user.comparePassword(req.body.password, (err, isMatch) => {
+
+            if (!isMatch) // 요청값과 데이터베이스에 존재하는값이 일치하지 않을경우
+                return res.json({ loginSuccess: false, message: "비밀번호가 틀렸습니다." })
+
+
+            //비밀번호까지 일치할경우 토큰을 생성
+            user.generateToken((err, user) => {
+                if (err) return res.status(400).send(err);
+
+                // 생성한 토큰을 저장한다 (쿠키에 저장)
+                res.cookie("x_auth", user.token)
+                    .status(200)
+                    .json({ loginSuccess: true, userId: user._id })
+            }) //토큰 종료
+        })
+    }) //검색 종료
+})// 유저로그인코드 종료
+
+
+app.get('/api/users/auth', auth, (req, res) => {// 엔드포인트에서 auth는 콜백 (req,res)전에 동작
+
+    res.status(200).json({
+        _id: req.user._id,
+        isAdmin: req.user.role === 0 ? false : true,
+        isAuth:true,
+        email: req.user.email,
+        name: req.user.name,
+        lastname: req.user.lastname,
+        role: req.user.role,
+        image: req.user.image
+    })
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-//지정한 port로 이 앱을 실행한다.
 
+app.post('/api/users/logout', auth, (req, res) => {
+
+    User.findOneAndUpdate(
+        { _id: req.user._id },
+        { token: "" }, (err, user) => {
+
+            if (err) return res.json({ success: false, err });
+            return res.status(200).send({
+                success: true
+            })
+        })
+})
+
+app.get('/api/hello',(req,res )=> {
+    res.send("안녕하세요!")
+})
+//프론트 LandingPage엔드포인트에서 넘어온입력을 서버에서 처리후  프론트로 다시보내주는역할
+
+const port = 5000
+//localhost:5000 포트 사용
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+// app이 포트번호를 읽게되면 콘솔로그를 찍는다.
