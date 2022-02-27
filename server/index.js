@@ -34,6 +34,13 @@ mongoose
 app.get('/', (req, res) => res.send('Hello World!~~'))
 // 루트 디렉토리에 들어올경우 res.send로 HelloWorld! 를 출력하도록함
 
+
+app.get('/api/hello', (req, res) => {
+
+    res.send("안녕하세요")
+
+})
+
 //유저정보를 저장하는 코드(회원가입)
 app.post('/api/users/register', (req, res) => {
 
