@@ -128,7 +128,7 @@ app.post('/api/users/logout', auth, (req, res) => {
 app.get('/api/hello',(req,res )=> {
     res.send("안녕하세요!!!!!!반갑습니다")
 })
-//프론트 LandingPage엔드포인트에서 넘어온입력을 서버에서 처리후  프론트로 다시보내주는역할
+//프론트 LandingPage 엔드포인트에서 넘어온입력을 서버에서 처리후  프론트로 다시보내주는역할
 
 const port = 5000
 //localhost:5000 포트 사용
