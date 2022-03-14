@@ -2,9 +2,11 @@ import { Axios } from 'axios'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginUser } from '../../../_actions/user_action'
+import { useNavigate } from 'react-router-dom';
 
-function LoginPage() {
+function LoginPage(props) {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
 
   // initialState는 처음에 어떻게 되었냐. 빈칸.
   const [Email, setEmail] = useState("")
@@ -30,7 +32,13 @@ function LoginPage() {
     }
     //action
     dispatch(loginUser(body))
-
+      .then(response => {
+        if(response.payload.loginSuccess) {
+          navigate('/') 
+        } else {
+          alert('Error')
+        }
+      })
   }
 
   //state를 value로 넣어줌(input type의 value참고)
