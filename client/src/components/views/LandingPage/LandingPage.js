@@ -14,7 +14,8 @@ function LandingPage() {
             display: 'flex', justifyContent: 'center', alignItems:'center',
             width: '100%', height: '100vh'
         }}>
-            <h2> 환영합니다 </h2>
+            <h2> 환영합니다
+                   </h2>
         </div>
     )
 }
