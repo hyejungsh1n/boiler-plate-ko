@@ -8,6 +8,7 @@
     "core-js": "^3.6.4",
     "formik": "^2.2.9",
     "moment": "^2.24.0",
+    "ntd": "^0.0.2",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.8.6",
@@ -42,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@ant-design/icons": "^4.7.0",
     "http-proxy-middleware": "^1.0.3"
   }
 }

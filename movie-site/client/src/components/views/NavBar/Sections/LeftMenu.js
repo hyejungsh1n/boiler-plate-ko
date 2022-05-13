@@ -8,7 +8,6 @@ function LeftMenu(props) {
     <Menu mode={props.mode}>
     <Menu.Item key="mail">
       <a href="/">HOME</a>
-    길게써야만 보이는 거임?
     </Menu.Item>
     <SubMenu title={<span>Blogs</span>} key="blog">
       <MenuItemGroup title="Item 1">
