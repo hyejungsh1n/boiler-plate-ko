@@ -88,6 +88,8 @@ function App() {
     ])
     let content = null;
     let contextControl = null;
+
+
     if (mode === 'WELCOME') {
       content = <Article title="hello, my house" body="go the the bed"></Article>
     } else if (mode === 'READ') {
@@ -105,6 +107,7 @@ function App() {
         event.preventDefault()
         setMode('UPDATE')
       }}>Update</a></li>
+
     } else if (mode === 'CREATE') {
       console.log("여기까지 들어옴?")
       content = <Create onCreate={(_title, _body)=>{
@@ -116,12 +119,28 @@ function App() {
         SetNextId(nextId+1)
         console.log("nextId,", nextId)
       }}></Create>
+
+
+
     } else if (mode === 'UPDATE') {
-      content = <Update onUpdate={(title, body)=>{
+      console.log("update. hello")
+      let title, body = null; // 초기값은 null (선택되지 않았기 때문에)
+      // topics에 있는 값중에 우리가 선택한 id와 일치하는 원소를 찾아서 그것을 title과 body의 값으로 세팅해준다
+      for(let i = 0; i<topics.length; i++) {
+        console.log(topics[i].id, id)
+        if(topics[i].id === id) { // topics의 값과 클릭한 id가 일치할 때.
+          title = topics[i].title;
+          body = topics[i].body; 
+        }
+      }
+
+      content = <Update title={title} body={body}  onUpdate={(title, body)=>{
 
       }}></Update>
     }
-  return (
+  
+  
+    return (
     <div>
       <Header title="I want to go home" onChangeMode={()=> {
         setMode('WELCOME')
@@ -136,7 +155,10 @@ function App() {
         event.preventDefault();
         setMode('CREATE')
       }}>Create</a></li>
-      <li><a href="/update">Update</a></li>
+      <li><a href="/update" onClick={event => {
+        event.preventDefault();
+        setMode('UPDATE')
+      }}>Update</a></li>
       </ul>
     </div>
   );
