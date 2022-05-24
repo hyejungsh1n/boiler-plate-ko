@@ -67,8 +67,8 @@ function Update(props) {
     const body = event.target.body.value;
     props.onUpdate(title, body);
   }}>
-    <p> <input type="text" name="title" placeholder="title"></input> </p>
-    <p><textarea name="body" placeholder="title"></textarea></p>
+    <p> <input type="text" name="title" placeholder="title" value={props.title}></input> </p> {/* value 값 추가 */}
+    <p><textarea name="body" placeholder="body" value={props.body}></textarea></p>
     <p><input type="submit" value="Update"></input></p>
   </form>
 </article>
