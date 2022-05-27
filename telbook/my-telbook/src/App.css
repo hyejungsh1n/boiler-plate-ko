@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+/* 경로 : src/App.css */
+
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Nanum Gothic", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  width: 600px;
+  margin: 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.input_boxes {
+  margin: 50px 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.input_box {
+  padding: 10px 0;
+}
+
+.input_box_name {
+  margin-bottom: 3px;
+}
+
+.input_box_input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.input_box_button {
+  margin-left: auto;
+  width: 100px;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #495057;
+  background: white;
+  color: #495057;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.input_box_button:hover {
+  background: #495057;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.phone_list {
+	display: flex;
+	flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.phone_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #495057;
+  padding: 20px;
+}
+
+.phone_item + .phone_item {
+  margin-top: 15px;
+}
+
+.phone_item_right button {
+  color: #fa5252;
+  font-size: 15px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
