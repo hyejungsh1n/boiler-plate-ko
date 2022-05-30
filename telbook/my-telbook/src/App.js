@@ -1,7 +1,7 @@
-// 경로 : src/App.js
-
 import React from "react";
 import "./App.css";
+
+// class component 강의를 들어서 이렇게 되어 있음 
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
             className="input_box_input"
           />
         </div>
-        <div className="input_box">
+        {/* <div className="input_box">
           <div className="input_box_name">전화번호</div>
           <input
             type="text"
@@ -25,7 +25,7 @@ function App() {
             className="input_box_input"
           />
         </div>
-        <button className="input_box_button">저장</button>
+        <button className="input_box_button">저장</button> */}
       </div>
 
       <div className="phone_list">
