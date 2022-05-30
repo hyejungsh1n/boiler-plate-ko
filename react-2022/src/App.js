@@ -59,6 +59,12 @@ function Create(props) {
 }
 
 function Update(props) {
+
+ // props.title을 state 상태로 바꿔주기 위해서 선언
+  const [title, setTitle] = useState(props.title);
+  // 위와 같이 이번엔 내용
+  const [body, setBody] = useState(props.body); 
+
   return <article>
   <h2>Update</h2>
   <form onSubmit={event=> {
