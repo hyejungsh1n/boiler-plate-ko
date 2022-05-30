@@ -42,6 +42,8 @@ function Article(props) {
 }
 
 
+// CREATE
+
 function Create(props) {
   return <article>
     <h2>Create</h2>
@@ -58,9 +60,14 @@ function Create(props) {
   </article>
 }
 
+
+
+// UPDATE 
+
+
 function Update(props) {
 
- // props.title을 state 상태로 바꿔주기 위해서 선언
+ // state로 제목과 내용 상태 관리
   const [title, setTitle] = useState(props.title);
   // 위와 같이 이번엔 내용
   const [body, setBody] = useState(props.body); 
@@ -73,12 +80,21 @@ function Update(props) {
     const body = event.target.body.value;
     props.onUpdate(title, body);
   }}>
-    <p> <input type="text" name="title" placeholder="title" value={props.title}></input> </p> {/* value 값 추가 */}
-    <p><textarea name="body" placeholder="body" value={props.body}></textarea></p>
+    <p> <input type="text" name="title" placeholder="title" value={title} onChange={event=> {
+      setTitle(event.target.value)
+    }}></input> </p> {/* value 값 추가 */}
+    <p><textarea name="body" placeholder="body" value={body} onChange={event=>
+      setBody(event.target.value)
+    }></textarea></p>
     <p><input type="submit" value="Update"></input></p>
   </form>
 </article>
 }
+
+
+
+
+// APP
 
 function App() {
   const [mode, setMode] = useState('WELCOME')
