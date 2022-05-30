@@ -2,13 +2,17 @@
 import React from "react"
 // scss 파일 가져다가 쓰기
 import "./PhoneList.scss"
+import PhoneItem from "../PhoneItem"
 
 
 // 2. 컴포넌트 만들기
 const PhoneList = () => {
     return (
         <div className="phone_list">
-
+            <PhoneItem />
+            <PhoneItem />
+            <PhoneItem />
+    
       </div>
     );
 }
