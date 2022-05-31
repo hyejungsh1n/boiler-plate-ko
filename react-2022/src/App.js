@@ -125,6 +125,7 @@ function App() {
         }
       } 
       content = <Article title={title} body={body}></Article>
+
       contextControl = <> 
       <li><a href={'/update/' + id} onClick={event=> {
         event.preventDefault()
@@ -133,7 +134,21 @@ function App() {
       <li>
         <input type="button" value="Delete" onClick={()=>{
 
-        
+          const newTopics = [];
+          
+          for(let i = 0; i < topics.length; i++ ) {
+
+            if(topics[i].id !== id) {
+
+              console.log("topics.length : ", topics.length)
+              console.log("topics[i].id:", topics[i].id)
+              console.log("this is id", id )
+              newTopics.push(topics[i]);
+              console.log("new Topics", newTopics)
+            }
+          }
+          setTopics(newTopics)
+          setMode('WELCOME')
         }} />
       </li>
       </>
