@@ -125,10 +125,18 @@ function App() {
         }
       } 
       content = <Article title={title} body={body}></Article>
-      contextControl = <li><a href={'/update/' + id} onClick={event=> {
+      contextControl = <> 
+      <li><a href={'/update/' + id} onClick={event=> {
         event.preventDefault()
         setMode('UPDATE')
       }}>Update</a></li>
+      <li>
+        <input type="button" value="Delete" onClick={()=>{
+
+        
+        }} />
+      </li>
+      </>
 
     } else if (mode === 'CREATE') {
       console.log("여기까지 들어옴?")
@@ -162,7 +170,7 @@ function App() {
         const newTopics = [...topics]
         const updatedTopic = {id : id, title:title, body:body}
         for(let i = 0; i < newTopics.length; i++) {
-          if(newTopics[i].id == id) {
+          if(newTopics[i].id === id) {
             newTopics[i] = updatedTopic;
             break;
           }
@@ -189,10 +197,11 @@ function App() {
         event.preventDefault();
         setMode('CREATE')
       }}>Create</a></li>
-      <li><a href="/update" onClick={event => {
+      {/* <li><a href="/update" onClick={event => {
         event.preventDefault();
         setMode('UPDATE')
-      }}>Update</a></li>
+      }}>Update</a></li> */}
+      {contextControl}
       </ul>
     </div>
   );
