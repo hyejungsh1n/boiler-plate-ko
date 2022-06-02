@@ -32,8 +32,8 @@ class Content extends Component {
   render() {
     return (
       <article>
-      <h2>HTML</h2>
-      HTML is HyperText Markup Language.
+        <h2>{this.props.title}</h2>
+        {this.props.desc}
     </article>
     )
   }
@@ -46,7 +46,7 @@ class App extends Component {
     <div className="App">
       <Subject title="WEB" sub="world wide web!"></Subject>
       <Index></Index>
-      <Content></Content>
+      <Content title="HTML" desc="HTML is HyperText Markup Language."></Content>
     </div>
     )
   }
