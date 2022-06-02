@@ -14,7 +14,7 @@ class Subject extends Component {
   }
 }
 
-class Index extends Component {
+class TOC extends Component {
   render() {
     return (
       <nav>
@@ -45,7 +45,7 @@ class App extends Component {
     return (
     <div className="App">
       <Subject title="WEB" sub="world wide web!"></Subject>
-      <Index></Index>
+      <TOC></TOC>
       <Content title="HTML" desc="HTML is HyperText Markup Language."></Content>
     </div>
     )
