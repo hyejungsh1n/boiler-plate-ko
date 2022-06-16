@@ -14,7 +14,6 @@ class App extends Component {
     super(props)
     this.state = {
       mode: 'read',
-      mode: 'welcome',
       subject:{title : 'WEB', sub: 'World Wide Web!'},
       welcome: {title:'Welcome!', desc:'Hello, React'},
       contents: [
@@ -31,21 +30,30 @@ class App extends Component {
 
 
     console.log('App render');
-    console.log('this mode', this.state.mode)
     var _title, _desc = null;
     if(this.state.mode === 'welcome') {
+      console.log('if')
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
     } else if(this.state.mode === 'read') {
-      _title = "없어 돌아가"
-      _desc = "집에 갈래요"
+      console.log("else if")
+      _title = this.state.contents[0].title
+      _desc = this.state.contents[0].desc
     }
 
 
     return (
     <div className="App">
-      <Subject title={this.state.subject.title} 
-      sub={this.state.subject.sub}></Subject>
+     {/* <Subject title={this.state.subject.title} 
+      sub={this.state.subject.sub}></Subject> */} 
+      <header>
+          <h1><a href="/" onClick={function (e) {
+            console.log(e);
+            e.preventDefault();
+            this.state.mode = 'welcome'
+          }.bind(this)}>{this.state.subject.title}</a></h1>
+          {this.state.subject.sub}
+      </header>
       <TOC data={this.state.contents}></TOC>
       <Content title={_title} desc={_desc}></Content>
     </div>
