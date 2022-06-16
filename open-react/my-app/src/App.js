@@ -44,7 +44,11 @@ class App extends Component {
     return (
     <div className="App">
      <Subject title={this.state.subject.title} 
-      sub={this.state.subject.sub}></Subject> 
+      sub={this.state.subject.sub}
+      onChangePage={function() {
+        alert("hihihi");
+      }.bind(this)}>
+        </Subject> 
       {/* <header>
           <h1><a href="/" onClick={function (e) {
             console.log(e);
