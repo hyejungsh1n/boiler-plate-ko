@@ -6,7 +6,6 @@ import './App.css';
 
 
 
-// class 형식으로 바꾸기
 class App extends Component {
   
   // step 1 : Add constructor 
@@ -49,7 +48,13 @@ class App extends Component {
         this.setState({mode: 'welcome'})
       }.bind(this)}>
         </Subject> 
-      <TOC data={this.state.contents}></TOC>
+      <TOC 
+            onChangePage={function(){
+              this.setState({mode: 'read'})
+              }.bind(this)}
+        data={this.state.contents}>
+
+        </TOC>
       <Content title={_title} desc={_desc}></Content>
     </div>
 
