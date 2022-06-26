@@ -4,6 +4,7 @@ class TOC extends Component {
     render() {
 
       console.log('TOC render');
+      console.log("comback!")
 
       var lists = [];
       var data = this.props.data;
