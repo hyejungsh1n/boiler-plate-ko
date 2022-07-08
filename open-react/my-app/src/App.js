@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import TOC from "./components/TOC"
 import Subject from "./components/Subject"
-import Content from "./components/Content"
+import CreateContent from "./components/CreateContent"
+import ReadContent from "./components/ReadContent"
 import Control from "./components/Control"
 import './App.css';
 
@@ -74,7 +75,7 @@ class App extends Component {
             mode:_mode
           });
         }.bind(this)}></Control>
-      <Content title={_title} desc={_desc}></Content>
+      <ReadContent title={_title} desc={_desc}></ReadContent>
     </div>
 
     )
