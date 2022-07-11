@@ -13,6 +13,7 @@ class App extends Component {
   // step 1 : Add constructor 
   constructor(props) {
     super(props)
+    this.max_content_id = 3; //state.contents 배열에 있는 id값 중 가장 큰 값과 같아야 함
     this.state = {
       mode: 'welcome',
       selected_content_id : 3,
