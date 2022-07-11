@@ -11,7 +11,12 @@ class CreateContent extends Component {
           
           onSubmit={function(e) {
             e.preventDefault()
-            alert("submit?")
+           // debugger;
+           this.props.onSubmit(
+             e.target.title.value,
+             e.target.desc.value
+           )
+            alert("등록 되었습니다")
           }.bind(this)}
           >
            <p><input type="text" name="title" placeholder="title"></input></p>
