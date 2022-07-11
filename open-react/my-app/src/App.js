@@ -3,6 +3,7 @@ import TOC from "./components/TOC"
 import Subject from "./components/Subject"
 import CreateContent from "./components/CreateContent"
 import ReadContent from "./components/ReadContent"
+import UpdateContent from './components/UpdateContent';
 import Control from "./components/Control"
 import './App.css';
 
@@ -29,10 +30,8 @@ class App extends Component {
     }
   }
 
-  render () {
-
-    console.log('App render');
-    var _title, _desc, _article = null;
+  getContent() {
+    let _title, _desc, _article = null;
     if(this.state.mode === 'welcome') {
       console.log('if')
       _title = this.state.welcome.title;
@@ -63,8 +62,15 @@ class App extends Component {
         });
         console.log(_title, _desc)
       }.bind(this)}></CreateContent>
+    } else if (this.state.mode === 'update') {
+
     }
 
+  }
+
+  render () {
+
+    console.log('App render');
     console.log("render", this)
 
 
@@ -90,7 +96,7 @@ class App extends Component {
             mode:_mode
           });
         }.bind(this)}></Control>
-        {_article}
+        {this.getContent()}
     </div>
 
     )
