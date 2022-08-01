@@ -9,18 +9,22 @@
     
     <script type="text/babel">
         const roots = document.getElementById('root');
-        const Title = (<h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+        const Title = () => 
+         ( <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
             Hello I'm a title
             </h3>
         );
 
-        const Button =  (<button style={{color: 'pink'}} onClick={() => console.log("this is clicked!")}>
+        const Button =  () => (<button style={{color: 'pink'}} onClick={() => console.log("this is clicked!")}>
             Click me!
             </button>);
 
-        const container = React.createElement("div", null, [Title, Button])
+        const Container = () => <div>
+            <Title />
+            <Button />
+            </div>
 
-        ReactDOM.render(container, roots)
+        ReactDOM.render(<Container />, roots)
     </script>
 
 </html>
