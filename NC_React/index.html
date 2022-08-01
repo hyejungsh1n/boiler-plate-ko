@@ -13,16 +13,11 @@
             Hello I'm a title
             </h3>
         );
-        // const h3 = React.createElement("h3",  {
-        //     onMouseEnter: () => console.log("mouse enter")
-        // }, "Hello, I am puppy");
 
         const Button =  (<button style={{color: 'pink'}} onClick={() => console.log("this is clicked!")}>
             Click me!
             </button>);
-        // const btn = React.createElement("button", {
-        //    onClick: () => console.log("Im clicked") // addEventListener
-        // }, "Click me");
+
         const container = React.createElement("div", null, [Title, Button])
 
         ReactDOM.render(container, roots)
