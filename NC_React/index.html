@@ -9,22 +9,27 @@
     
     <script type="text/babel">
         const roots = document.getElementById('root');
-        const Title = () => 
-         ( <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
-            Hello I'm a title
-            </h3>
+        let counter = 0;
+
+        
+        function countUp() {
+            counter = counter + 1;
+            render(); // count 될 때 호출 하기. 값이 변경 되어야 함
+        }
+
+        // redner 한 번 더 호출 하는 함수.
+        function render() {
+            ReactDOM.render(<Container />, roots)
+        }
+
+        const Container = () => (
+        <div>
+            <h3>Total Clicks : {counter}</h3>
+            <button onClick={countUp}>Click me!</button>
+        </div>
         );
-
-        const Button =  () => (<button style={{color: 'pink'}} onClick={() => console.log("this is clicked!")}>
-            Click me!
-            </button>);
-
-        const Container = () => <div>
-            <Title />
-            <Button />
-            </div>
-
-        ReactDOM.render(<Container />, roots)
+        
+        render()
     </script>
 
 </html>
