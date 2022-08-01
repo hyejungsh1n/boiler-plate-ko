@@ -5,16 +5,25 @@
     </body>
     <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
-    <script>
-        const roots = document.getElementById('root')
-        const h3 = React.createElement("h3",  {
-            onMouseEnter: () => console.log("mouse enter")
-        }, "Hello, I am puppy");
-        const btn = React.createElement("button", {
-           onClick: () => console.log("Im clicked") // addEventListener
-        }, "Click me");
-        const container = React.createElement("div", null, [h3, btn])
+    <script type="text/babel">
+        const roots = document.getElementById('root');
+        const Title = (<h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+            Hello I'm a title
+            </h3>
+        );
+        // const h3 = React.createElement("h3",  {
+        //     onMouseEnter: () => console.log("mouse enter")
+        // }, "Hello, I am puppy");
+
+        const Button =  (<button style={{color: 'pink'}} onClick={() => console.log("this is clicked!")}>
+            Click me!
+            </button>);
+        // const btn = React.createElement("button", {
+        //    onClick: () => console.log("Im clicked") // addEventListener
+        // }, "Click me");
+        const container = React.createElement("div", null, [Title, Button])
 
         ReactDOM.render(container, roots)
     </script>
