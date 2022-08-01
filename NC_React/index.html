@@ -8,12 +8,15 @@
     
     <script>
         const roots = document.getElementById('roots')
-        const span = React.createElement(
-            "span", 
-            {id : "puppy", style:{ color : 'pink'}},
-             "Hello, I am puppy"
-        );
-        ReactDOM.render(span, roots)
+        const h3 = React.createElement("h3",  {
+            onMouseEnter: () => console.log("mouse enter")
+        }, "Hello, I am puppy");
+        const btn = React.createElement("button", {
+           onClick: () => console.log("Im clicked") // addEventListener
+        }, "Click me");
+        const container = React.createElement("div", null, [h3, btn])
+
+        ReactDOM.render(container, roots)
     </script>
 
 </html>
