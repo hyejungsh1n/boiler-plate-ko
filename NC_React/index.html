@@ -9,27 +9,18 @@
     
     <script type="text/babel">
         const roots = document.getElementById('root');
-        let counter = 0;
 
-        
-        function countUp() {
-            counter = counter + 1;
-            render(); // count 될 때 호출 하기. 값이 변경 되어야 함
-        }
-
-        // redner 한 번 더 호출 하는 함수.
-        function render() {
-            ReactDOM.render(<Container />, roots)
-        }
-
-        const Container = () => (
+        function App () {
+            const data = React.useState();
+            console.log(data);
+        return (
         <div>
-            <h3>Total Clicks : {counter}</h3>
-            <button onClick={countUp}>Click me!</button>
+            <h3>Total Clicks : 0 </h3>
+            <button>Click me!</button>
         </div>
         );
-        
-        render()
+        }
+        ReactDOM.render(<App />, roots)
     </script>
 
 </html>
