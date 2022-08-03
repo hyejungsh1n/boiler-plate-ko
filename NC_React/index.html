@@ -9,14 +9,16 @@
     
     <script type="text/babel">
         const roots = document.getElementById('root');
-
         function App () {
-            const data = React.useState();
-            console.log(data); // [undefined, f] 1번째는 data, 2번째는 data를 바꿀 때 사용하는 함수
+            // useState는 배열 하나르 ㄹ제공
+            const [counter, setCounter]= React.useState(0);
+            const onClick = ()=> {
+               setCounter(counter + 1)
+            }
         return (
         <div>
-            <h3>Total Clicks : 0 </h3>
-            <button>Click me!</button>
+            <h3>Total Clicks : {counter}</h3>
+            <button onClick={onClick}>Click me!</button>
         </div>
         );
         }
