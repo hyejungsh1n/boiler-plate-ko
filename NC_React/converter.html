@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <script type="text/babel">
+
+        function App () {
+
+            const [minutes, etMinutes] = React.useState('');
+            const [hours, setHours] = React.useState('')
+
+            const convertHours = () => {
+                setHours((current) => current * 60)
+            }
+
+            return (
+                <div>
+                    <h1 className="h1">Super Converter</h1>
+                    <label htmlFor="minutes">Minutes</label>
+                    <input value={minutes}
+                     id="minutes" 
+                    placeholder="분" 
+                    type="number" />
+                    <label htmlFor="hours">Hours</label>
+                    <input value={hours}
+                     onChange={convertHours} id="hours" placeholder="시간" type="number" /> 
+                    <h3>{hours} 분입니다</h3>
+                </div>
+            );
+        }
+        const roots = document.getElementById('root');
+        ReactDOM.render(<App />, roots)
+    </script>
+
+</html>
