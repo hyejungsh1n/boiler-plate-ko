@@ -12,7 +12,7 @@
         function App () {
 
             const [minutes, setMinutes] = React.useState('');
-            const [hours, setHours] = React.useState(0)
+            const [hours, setHours] = React.useState(1)
 
             
 
@@ -20,7 +20,7 @@
          
                 console.log("hello")
 
-                setHours((current) => current + 60 ) 
+                setHours((current) => current * 60 ) 
             }
         
 
