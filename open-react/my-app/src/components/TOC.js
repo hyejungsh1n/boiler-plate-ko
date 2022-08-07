@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 class TOC extends Component {
+
     render() {
 
       console.log('TOC render');
@@ -12,9 +13,10 @@ class TOC extends Component {
       while( i < data.length) {
         lists.push(<li key={data[i].id}>
           <a href={"/content/" + data[i].id}
+            data-id = {data[i].id}
             onClick={function (e) {
               e.preventDefault();
-              this.props.onChangePage();
+              this.props.onChangePage(e.target.dataset);
             }.bind(this)}
           >
         {data[i].title}
