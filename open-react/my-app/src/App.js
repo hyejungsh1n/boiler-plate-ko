@@ -52,13 +52,15 @@ class App extends Component {
         </Subject> 
       <TOC 
             onChangePage={function(id){
+               console.log("here??")
               this.setState({
                 mode: 'read',
                selected_content_id:Number(id)
               })
               }.bind(this)}
         data={this.state.contents}>
-          <Control onChangeMode={function(_mode) {
+        <Control onChangeMode={function(_mode) {
+            console.log("where is????")
             this.setState({
               mode:_mode
             })
