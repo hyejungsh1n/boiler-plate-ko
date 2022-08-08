@@ -118,12 +118,22 @@ class App extends Component {
         </Subject> 
       <TOC 
             onChangePage={function(id){
+               console.log("here??")
               this.setState({
                 mode: 'read',
                selected_content_id:Number(id)
               })
               }.bind(this)}
         data={this.state.contents}>
+<<<<<<< HEAD
+        <Control onChangeMode={function(_mode) {
+            console.log("where is????")
+            this.setState({
+              mode:_mode
+            })
+          }.bind(this)}></Control>
+=======
+>>>>>>> f8b1bdba0c9c9d1959c99a864a1852ae7202b645
         </TOC>
         <Control onChangeMode={function(_mode) {
           this.setState({
