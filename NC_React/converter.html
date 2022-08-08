@@ -14,19 +14,9 @@
             const [minutes, setMinutes] = React.useState('');
             const [hours, setHours] = React.useState(0)
 
-            const convertHours = () => {
+        const convertHours = () => {
                 setHours((current) => current + 60);
-                console.log("this")
-            const [hours, setHours] = React.useState(1)
-
-            
-
-            const convertHours = () => {
-         
-                console.log("hello")
-
-                setHours((current) => current * 60 ) 
-            }
+                console.log("this") }
         
 
             return (
@@ -41,11 +31,6 @@
                     <input 
                      onKeyUp={convertHours} id="hours" placeholder="시간" type="number" /> 
                     <h3>{hours} 분입니다</h3>
-
-                     onChange={
-                        convertHours} id="hours" placeholder="시간" type="number" /> 
-                            
-                        <h3>{hours} 분입니다</h3>
                         
                 </div>
             );
