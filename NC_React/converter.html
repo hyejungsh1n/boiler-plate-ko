@@ -14,21 +14,21 @@
             const [minutes, setMinutes] = React.useState('');
             const [hours, setHours] = React.useState(0)
 
-        const convertHours = () => {
-                setHours((current) => current + 60);
-                console.log("this") }
+        const convertHours = (event) => {
+       
+                setHours(event.target.value * 60) }
         
 
             return (
                 <div>
                     <h1 className="h1">Super Converter</h1>
                     <label htmlFor="minutes">Minutes</label>
-                    <input value={minutes}
+                    <input defalutValue={minutes}
                      id="minutes" 
                     placeholder="분" 
                     type="number" />
                     <label htmlFor="hours">Hours</label>
-                    <input 
+                    <input defaultValue={hours}
                      onKeyUp={convertHours} id="hours" placeholder="시간" type="number" /> 
                     <h3>{hours} 분입니다</h3>
                         
