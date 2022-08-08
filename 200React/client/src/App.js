@@ -1,4 +1,4 @@
-import R003_ImportComponent from './R003_ImportComponent'
+import R003 from './R003'
 import './App.css';
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
     <div>
       <h1> Start React 200!</h1>
       <p>CSS 적용하기</p>
-      <R003_ImportComponent></R003_ImportComponent>
+      <R003></R003>
     </div>
   );
 }

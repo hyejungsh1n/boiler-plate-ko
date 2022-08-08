@@ -29,7 +29,7 @@ export default function (SpectificComponent, option, adminRoute = null) {
                 }
             }
         })
-        // Axios.get('/api/users/auth')
+        Axios.get('/api/users/auth')
     }, [])
     return (
         <SpectificComponent />
