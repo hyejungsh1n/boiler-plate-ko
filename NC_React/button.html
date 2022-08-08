@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <script type="text/babel">
+
+        function Btn(props) { // btn으로부터 전달받는 속성(properties)
+
+            console.log("########", props)
+            return  <button style={{
+                backgroundColor: "tomato",
+                color:"white",
+                padding:"10px 20px",
+                border: 0,
+                borderRadius: 10,
+            }}>{props.helloKitty}</button>;
+        }
+
+        function App () {
+
+            return (
+
+                <div>
+                    <Btn helloKitty="Save Change" />
+                    <Btn helloKitty="Continue" />
+                </div> );
+
+        }
+        const roots = document.getElementById('root');
+        ReactDOM.render(<App />, roots)
+    </script>
+
+</html>
