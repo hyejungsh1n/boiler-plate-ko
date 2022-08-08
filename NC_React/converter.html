@@ -16,7 +16,7 @@
 
         const convertHours = (event) => {
        
-                setHours(event.target.value * 60) }
+                setHours(event.target.value) }
         
 
             return (
@@ -25,7 +25,7 @@
                     <label htmlFor="hours">Hours</label>
                     <input defaultValue={hours}
                      onChange={convertHours} id="hours" placeholder="시간" type="number" /> 
-                    <h3>{hours} 분입니다</h3>
+                    <h3>{hours * 60} 분입니다</h3>
                         
                 </div>
             );
