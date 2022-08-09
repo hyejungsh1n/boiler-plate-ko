@@ -18,6 +18,7 @@
                 padding:"10px 20px",
                 border: 0,
                 borderRadius: 10,
+                fontSize: props.big ? 18 : 16,
             }}>{props.buttonText}</button>;
         }
 
@@ -26,8 +27,8 @@
             return (
 
                 <div>
-                    <Btn buttonText="Save Change" />
-                    <Btn buttonText="Continue" />
+                    <Btn buttonText="Save Change" big={true}/>
+                    <Btn buttonText="Continue" big={false} />
                 </div> );
 
         }
