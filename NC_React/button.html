@@ -9,26 +9,31 @@
     
     <script type="text/babel">
 
-        function Btn(props) { // btn으로부터 전달받는 속성(properties)
+        function Btn({ buttonText, addEvent }) { // btn으로부터 전달받는 속성(properties)
 
-            console.log("########", props)
-            return  <button style={{
+
+            return ( <button
+            onClick={addEvent} 
+            style={{ // event 설치는 여기에
                 backgroundColor: "tomato",
                 color:"white",
                 padding:"10px 20px",
                 border: 0,
                 borderRadius: 10,
-                fontSize: props.big ? 18 : 16,
-            }}>{props.buttonText}</button>;
+                fontSize: 16
+            }}>{buttonText}</button>);
         }
 
         function App () {
-
+            const [value, setValue] = React.useState("Save Changes");
+            const changeValue = ()=> {
+                setValue("Revert Changes")
+            }
             return (
 
                 <div>
-                    <Btn buttonText="Save Change" big={true}/>
-                    <Btn buttonText="Continue" big={false} />
+                    <Btn buttonText={value} addEvent={changeValue} />
+                    <Btn buttonText="Continue" />
                 </div> );
 
         }
