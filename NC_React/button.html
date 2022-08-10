@@ -3,8 +3,8 @@
     <body>
         <div id="root"></div>
     </body>
-    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
@@ -13,6 +13,7 @@
         function Btn({ buttonText, addEvent }) { // btn으로부터 전달받는 속성(properties)
 
            // console.log(buttonText, "was rendered!!!!!!!!!!!!!!!!!!!!!")
+
             return ( <button
             onClick={addEvent} 
             style={{ // event 설치는 여기에
@@ -25,6 +26,10 @@
             }}>{buttonText}</button>);
         }
 
+        Btn.propTypes= {
+            buttonText: PropTypes.string,
+        };
+
         const MemorizedBtn = React.memo(Btn);
 
         function App () {
@@ -36,7 +41,7 @@
 
                 <div>
                     <MemorizedBtn buttonText={value} addEvent={changeValue} />
-                    <MemorizedBtn buttonText="Continue" />
+                    <MemorizedBtn buttonText={"continue"}  />
                 </div> );
 
         }
