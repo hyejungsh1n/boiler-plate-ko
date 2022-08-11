@@ -9,8 +9,17 @@ function App() {
   console.log("i run all the time");
 
   useEffect(() => {
-    console.log("CALL THE API...")
-  }, [])
+    console.log("call the api...")
+    
+  }, []);
+
+  useEffect(() => {
+    console.log("this")
+    if (keyword !== "" && keyword.length > 5) {
+    console.log("SEARCH FOR", keyword);
+    }
+  }, [keyword])
+
   return (
     <div>
       <input value={keyword} onChange={inputText} type="text" placeholder="Search here..." />
