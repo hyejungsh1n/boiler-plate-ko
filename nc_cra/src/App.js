@@ -1,32 +1,21 @@
 import { useState, useEffect } from "react"
 
-function App() {
-  const [counter, setCounter] = useState(0);
-  const [keyword, setKeyword] = useState("")
-  const btnClick = () =>  setCounter((current) => current + 1);
-  const inputText = (event) =>  setKeyword(event.target.value);  
-  
-  console.log("i run all the time");
+function Hello() {
+  useEffect(() => {console.log("im living")}, [])
+  return <h1>Hello</h1>
+}
 
-  useEffect(() => {
-    console.log("call the api...")
-    
-  }, []);
+const App = () => {
 
-  useEffect(() => {
-    console.log("this")
-    if (keyword !== "" && keyword.length > 5) {
-    console.log("SEARCH FOR", keyword);
-    }
-  }, [keyword])
+  const [showing, setShowing] = useState(false);
+  const onClick = () => setShowing(prev => !prev);  
 
-  return (
-    <div>
-      <input value={keyword} onChange={inputText} type="text" placeholder="Search here..." />
-      <h2>Counter {counter}</h2>
-      <button onClick={btnClick}>Click me!</button>
+  return ( <div>
+      {showing ? <Hello /> : null}
+      <button onClick={onClick}>{showing ? "Hide" : "SHOW"}</button>
     </div>
   );
 }
+
 
 export default App;
