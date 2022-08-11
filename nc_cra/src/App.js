@@ -1,10 +1,21 @@
-import Btn from "./Button"
+import { useState, useEffect } from "react"
 
 function App() {
+  const [counter, setCounter] = useState(0);
+  const [keyword, setKeyword] = useState("")
+  const btnClick = () =>  setCounter((current) => current + 1);
+  const inputText = (event) =>  setKeyword(event.target.value);  
+  
+  console.log("i run all the time");
+
+  useEffect(() => {
+    console.log("CALL THE API...")
+  }, [])
   return (
     <div>
-      <h1>Welcome back!</h1>
-      <Btn text={"Confirm"}/>
+      <input value={keyword} onChange={inputText} type="text" placeholder="Search here..." />
+      <h2>Counter {counter}</h2>
+      <button onClick={btnClick}>Click me!</button>
     </div>
   );
 }
