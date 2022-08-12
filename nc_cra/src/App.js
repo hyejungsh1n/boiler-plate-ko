@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 
 function Hello() {
-  useEffect(() => {console.log("im living")}, [])
+  useEffect(() => {
+    console.log("im living");
+  }, []);
   return <h1>Hello</h1>
 }
 
